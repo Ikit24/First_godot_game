@@ -21,20 +21,19 @@ func _process(delta):
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
+		$animatedAnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()
 	
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
+	$AnimatedSprite2D.flip_v = velocity.y > 0
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = false
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 	elif velocity.y != 0:
 		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = velocity.y > 0
 
 
 func _on_body_entered(body: Node2D) -> void:
