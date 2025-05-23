@@ -38,4 +38,4 @@ func _on_start_timer_timeout() -> void:
 	$ScoreTimer.start()
 	
 func _ready():
-	new_game()
+	pass
