@@ -35,9 +35,10 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "up"
 
 func _on_body_entered(body: Node2D) -> void:
-	hide()
-	hit.emit()
-	$CollisionShape2D.set_deferred("disabled", true)
+	if body.name == "Player":
+		hide()
+		hit.emit()
+		$CollisionShape2D.set_deferred("disabled", true)
 	
 func start(pos):
 	position = pos

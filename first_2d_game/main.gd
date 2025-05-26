@@ -35,7 +35,12 @@ func _on_start_timer_timeout() -> void:
 	$ScoreTimer.start()
 	
 func _ready():
-	pass
+	$MobPath.curve.clear_points()
+	$MobPath.curve.add_point(Vector2(0, 0))        # Top-left
+	$MobPath.curve.add_point(Vector2(1152, 0))     # Top-right
+	$MobPath.curve.add_point(Vector2(1152, 648))   # Bottom-right  
+	$MobPath.curve.add_point(Vector2(0, 648))      # Bottom-left
+	$MobPath.curve.add_point(Vector2(0, 0))
 
 func _on_hud_start_game() -> void:
 	new_game()
