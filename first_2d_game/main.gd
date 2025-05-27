@@ -13,6 +13,7 @@ func new_game():
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
+	get_tree().call_group("mobs", "queue_free")
 
 func _on_mob_timer_timeout():
 	var mob = mob_scene.instantiate()
@@ -33,13 +34,14 @@ func _on_score_timer_timeout() -> void:
 func _on_start_timer_timeout() -> void:
 	$MobTimer.start()
 	$ScoreTimer.start()
+	$HUD.hide_message()
 	
 func _ready():
 	$MobPath.curve.clear_points()
-	$MobPath.curve.add_point(Vector2(0, 0))        # Top-left
-	$MobPath.curve.add_point(Vector2(1152, 0))     # Top-right
-	$MobPath.curve.add_point(Vector2(1152, 648))   # Bottom-right  
-	$MobPath.curve.add_point(Vector2(0, 648))      # Bottom-left
+	$MobPath.curve.add_point(Vector2(0, 0))
+	$MobPath.curve.add_point(Vector2(1152, 0))
+	$MobPath.curve.add_point(Vector2(1152, 648)) 
+	$MobPath.curve.add_point(Vector2(0, 648))
 	$MobPath.curve.add_point(Vector2(0, 0))
 
 func _on_hud_start_game() -> void:

@@ -35,7 +35,7 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "up"
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.is_in_group("mobs") or body is RigidBody2D:
 		hide()
 		hit.emit()
 		$CollisionShape2D.set_deferred("disabled", true)
