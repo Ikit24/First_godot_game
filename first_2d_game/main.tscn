@@ -98,6 +98,10 @@ text = "Start"
 wait_time = 2.0
 one_shot = true
 
+[node name="Music" type="AudioListener2D" parent="."]
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
